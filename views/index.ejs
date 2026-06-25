@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Message Board</title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <a href="/create">Create New Message</a>
+    <div>
+        <% messages.forEach(message => { %>
+            <div>
+                <p><strong><%= message.user %></strong> </p>
+                <p><%= message.text %></p>
+            </div>
+            <div>
+                <p><%= message.added %></p>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
