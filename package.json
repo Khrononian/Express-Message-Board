@@ -4,10 +4,10 @@
     "express": "^5.2.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
-  "main": "src/server.js",
+  "main": "server.js",
   "deploy": {
-    "startCommand": "node src/server.js"
+    "startCommand": "node server.js"
   }
 }
