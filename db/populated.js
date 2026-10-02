@@ -15,7 +15,8 @@ VALUES
 
 const main = async () => {
     const client = new Client({
-        connectionString: 'postgresql://postgres:005522@localhost:5432/dbmessages'
+        // connectionString: 'postgresql://postgres:005522@localhost:5432/dbmessages'
+        connectionString: process.env.DATABASE_URL
     })
     await client.connect()
     await client.query(SQL)
