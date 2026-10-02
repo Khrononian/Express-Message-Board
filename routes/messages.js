@@ -1,19 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const app = express();
-
-const messages = [
-    {
-        text: 'Hey there!',
-        user: 'Amanda',
-        added: new Date()
-    },
-    {
-        text: 'Hello!',
-        user: 'John',
-        added: new Date()
-    }
-]
+const db = require('../db/queries')
 
 app.use(express.urlencoded({ extended: true }))
 
@@ -21,14 +9,14 @@ router.get('/', (req, res) => {
     res.render('messages/newMessage', { title: 'Create New Message' });
 })
 
-router.post('/', (req, res) => {
-    const newMessage = {
-        user: req.body.messageUser,
-        text: req.body.messageText,
-        added: new Date()
-    };
-    messages.push(newMessage);
+router.post('/', async (req, res) => {
+    const { message, username } = req.body;
+    const timestamp = new Date();
+    
+    console.log('Test',{ message, username, timestamp });
+    await db.insertMessage(message, username, timestamp);
+    
     res.redirect('/');
 });
 
-module.exports = { router, messages };
+module.exports = { router };
